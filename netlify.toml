@@ -2,6 +2,21 @@
   command = "npm run build"
   publish = "dist"
 
+# Force HTTPS
+[[redirects]]
+  from = "http://odyssey.markets/*"
+  to = "https://odyssey.markets/:splat"
+  status = 301
+  force = true
+
+# Redirect www to non-www
+[[redirects]]
+  from = "https://www.odyssey.markets/*"
+  to = "https://odyssey.markets/:splat"
+  status = 301
+  force = true
+
+# SPA redirect
 [[redirects]]
   from = "/*"
   to = "/index.html"
@@ -14,3 +29,4 @@
     X-XSS-Protection = "1; mode=block"
     X-Content-Type-Options = "nosniff"
     Referrer-Policy = "strict-origin-when-cross-origin"
+    Strict-Transport-Security = "max-age=31536000; includeSubDomains; preload"
